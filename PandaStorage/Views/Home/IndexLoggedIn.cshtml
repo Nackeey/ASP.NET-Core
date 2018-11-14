@@ -1,0 +1,20 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<PandaUser> SignInManager
+@inject UserManager<PandaUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+                {
+<div>
+    @if (User.IsInRole("Administrator"))
+                        {
+    <h1 class="text-center">Hello, Administrator @User.Identity.Name</h1>
+    <hr class="hr-2 bg-panda">
+                        }
+                        else
+                        {
+    <h1 class="text-center">Hello, @User.Identity.Name</h1>
+    <hr class="hr-2 bg-panda">
+                        }
+</div>
+                }
