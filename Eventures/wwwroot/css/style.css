@@ -1,0 +1,61 @@
+.bg-eventures {
+    background-color: #AFEEEE;
+}
+
+.text-eventures {
+    color: black;
+}
+
+.border-eventures {
+    border: 2px solid #AFEEEE;
+    border-radius: 7px;
+}
+
+.nav-link-black {
+    color: black;
+}
+
+.hr-eventures-blue-2 {
+    border: 0;
+    border-top: 3px solid;
+    color: #AFEEEE;
+    width: 60%;
+}
+
+.hr-eventures-blue {
+    border: 0;
+    border-top: 3px solid;
+    color: #AFEEEE;
+    width: 40%;
+}
+
+.hr-eventures {
+    border: 0;
+    border-top: 2px solid;
+    color: black;
+}
+
+a {
+    text-underline: none;
+}
+
+a:hover {
+    outline: none;
+    text-decoration: none;
+}
+
+tr {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+}
+
+textarea {
+    resize: none;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    border: 0;
+    width: 98%;
+}
