@@ -31,3 +31,4 @@ C:\Users\s2k\source\repos\PandaStorage\PandaStorage\bin\Debug\netcoreapp2.1\View
 C:\Users\s2k\source\repos\PandaStorage\PandaStorage\bin\Debug\netcoreapp2.1\Views\Account\Register.cshtml
 C:\Users\s2k\source\repos\PandaStorage\PandaStorage\obj\Debug\netcoreapp2.1\Razor\Views\Home\IndexLoggedIn.g.cshtml.cs
 C:\Users\s2k\source\repos\PandaStorage\PandaStorage\obj\Debug\netcoreapp2.1\PandaStorage.csprojAssemblyReference.cache
+C:\Users\s2k\source\repos\PandaStorage\PandaStorage\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs

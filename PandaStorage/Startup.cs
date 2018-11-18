@@ -13,7 +13,7 @@ using PandaStorage.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PandaStorage.Models;
-using PandaStorage.Utiities;
+using PandaStorage.Utilities;
 
 namespace PandaStorage
 {

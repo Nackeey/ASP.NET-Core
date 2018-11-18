@@ -73,7 +73,7 @@ using Microsoft.AspNetCore.Identity;
             WriteLiteral("    <div class=\"jumbotron mt-3 bg-panda\">\r\n        <h1 class=\"text-white\">Welcome to PANDA Delivery Services.</h1>\r\n        <hr class=\"bg-white hr-2\" />\r\n        <h3 class=\"text-white\">");
             EndContext();
             BeginContext(361, 56, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1bc9a1932ee34073bf83a1f4f0e564d4", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "185fac1a433a4eaf95f020dd8a87576d", async() => {
                 BeginContext(408, 5, true);
                 WriteLiteral("Login");
                 EndContext();
@@ -97,7 +97,7 @@ using Microsoft.AspNetCore.Identity;
             WriteLiteral(" if you have an account.</h3>\r\n        <h3 class=\"text-white\">");
             EndContext();
             BeginContext(479, 62, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "43ddfee14d2e46d68a16747d0ff8b404", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a28f66a67d0947f9b11f9a704b25e8d9", async() => {
                 BeginContext(529, 8, true);
                 WriteLiteral("Register");
                 EndContext();

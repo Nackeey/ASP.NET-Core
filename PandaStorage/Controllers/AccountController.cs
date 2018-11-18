@@ -41,13 +41,8 @@ namespace PandaStorage.Controllers
         [HttpGet]
         public IActionResult Login(string returnUrl = "")
         {
-            if (ModelState.IsValid)
-            {
-                var model = new LoginViewModel() { ReturnUrl = returnUrl };
-                return View(model);
-            }
-
-            return this.View();
+            var model = new LoginViewModel() { ReturnUrl = returnUrl };
+            return View(model);
         }
 
         [HttpPost]
@@ -68,18 +63,25 @@ namespace PandaStorage.Controllers
                         return RedirectToAction("Index", "Home");
                     }
                 }
-                else
-                {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                }
             }
 
-            return View();
+            return View(model);
         }
 
         public IActionResult Register()
         {
             return View();
+        }
+
+        [AcceptVerbs("Get", "Post")]
+        public IActionResult VerifyUsername(RegisterViewModel model)
+        {
+            if (this.applicationDb.Users.Any(u => u.UserName == model.Username))
+            {
+                return Json("This username is already taken");
+            }
+
+            return Json(true);
         }
 
         [HttpPost]
@@ -110,8 +112,8 @@ namespace PandaStorage.Controllers
 
                     var addtoRoleResult = userManager.AddToRoleAsync(user, role.Name).Result;
                 }
-
-                return RedirectToAction("Index", "Home");
+                
+                return RedirectToAction("Login", "Account");
             }
 
             return View();
