@@ -3,28 +3,33 @@
 @inject SignInManager<EventureUser> SignInManager
 @inject UserManager<EventureUser> UserManager
 
-@if (!SignInManager.IsSignedIn(User))
+@if (SignInManager.IsSignedIn(User))
 {
     <div class="jumbotron bg-eventures w-75 mx-auto">
-        <h1 class="text-eventures" style="font-size: 30px;">Eventures - The best ticket service in the world.</h1>
-        <hr class="bg-eventures hr-eventures"/>
-        <h1 class="text-black"><a asp-controller="Account" asp-action="Login">Login</a> to start "eventing".</h1>
-        <h1 class="text-black"><a asp-controller="Account" asp-action="Register">Register</a> if you don't.</h1>
+        <div>
+            @if (User.IsInRole("Administrator"))
+            {
+                <h2 class="text-center" style="font-size: 30px;"><strong>Greetings, Administrator - @User.Identity.Name!</strong></h2>
+                <hr class="bg-eventures">
+            }
+            else
+            {
+                <h2 class="text-center" style="font-size: 30px;">Welcome, @User.Identity.Name!</h2>
+                <hr class="hr-eventures" style="color: black;">
+            }
+            <h2 class="text-eventures text-center">Enjoy your work.</h2>
+        </div>
     </div>
 }
 else
 {
-    <div>
-        @if (User.IsInRole("Administrator"))
-        {
-            <h1 class="text-center">Hello, Administrator @User.Identity.Name</h1>
-            <hr class="bg-eventures">
-        }
-        else
-        {
-            <h1 class="text-center">Hello, @User.Identity.Name</h1>
-            <hr class="bg-eventures">
-        }
+    <div class="jumbotron bg-eventures w-75 mx-auto">
+        <h1 class="text-eventures" style="font-size: 30px;">Eventures - The best ticket service in the world.</h1>
+        <hr class="bg-eventures hr-eventures" />
+        <h2 class="text-black"><a asp-controller="Account" asp-action="Login">Login</a> to start "eventing".</h2>
+        <h2 class="text-black"><a asp-controller="Account" asp-action="Register">Register</a> if you don't.</h2>
     </div>
 }
+
+
 
