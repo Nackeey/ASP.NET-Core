@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Eventures.Data;
+using Eventures.ViewModels.EventViewModels;
 using Eventures.Models;
-using Eventures.ViewModels.Event;
+
 using Microsoft.AspNetCore.Mvc;
 
 namespace Eventures.Controllers
@@ -20,7 +21,14 @@ namespace Eventures.Controllers
 
         public IActionResult AllEvents()
         {
-            return View();
+            var events = this.applicationDb.Events.ToList();
+
+            var allEvents = new AllEventsViewModel
+            {
+                Events = events
+            };
+
+            return View("AllEvents", allEvents);
         }
 
         public IActionResult Create()
