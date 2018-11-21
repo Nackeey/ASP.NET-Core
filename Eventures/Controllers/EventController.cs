@@ -7,16 +7,19 @@ using Eventures.ViewModels.EventViewModels;
 using Eventures.Models;
 
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace Eventures.Controllers
 {
     public class EventController : Controller
     {
         private readonly ApplicationDbContext applicationDb;
+        private readonly ILogger logger;
 
-        public EventController(ApplicationDbContext applicationDb)
+        public EventController(ApplicationDbContext applicationDb, ILoggerFactory logger)
         {
             this.applicationDb = applicationDb;
+            this.logger = logger.CreateLogger<EventController>();
         }
 
         public IActionResult AllEvents()
@@ -54,6 +57,7 @@ namespace Eventures.Controllers
                 this.applicationDb.Events.Add(newEvent);
                 this.applicationDb.SaveChanges();
 
+                this.logger.LogInformation($"{this.User.Identity.Name} created a new event with start date {model.Start}");
                 return RedirectToAction("AllEvents");
             }
 

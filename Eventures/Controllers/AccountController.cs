@@ -60,7 +60,7 @@ namespace Eventures.Controllers
                 }
             }
 
-            return View(model);
+            return View();
         }
 
         public IActionResult Register()
