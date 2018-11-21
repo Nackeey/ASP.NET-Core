@@ -1,0 +1,31 @@
+﻿@model Eventures.ViewModels.EventViewModels.AllEventsViewModel
+
+<h1 class="text-center" style="font-size: 25px">All Events</h1>
+<hr class="hr-eventures-blue" style="width: 80%;" />
+<table class="table" style="width: 80%; margin: auto;">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Start</th>
+            <th scope="col">End</th>
+            <th scope="col">Place</th>
+        </tr>
+    </thead>
+    @for (int i = 0; i < Model.Events.Count(); i++)
+    {
+        var item = Model.Events.ToList()[i];
+        var number = i + 1;
+
+        <tbody>
+            <tr>
+                <td>@number</td>
+                <td>@item.Name</td>
+                <td>@item.Start</td>
+                <td>@item.End</td>
+                <td>@item.Place</td>
+            </tr>
+        </tbody>
+    }
+</table>
+<hr class="hr-eventures-blue" style="width: 80%;" />
