@@ -28,8 +28,10 @@ C:\Users\s2k\source\repos\PandaStorage\Eventures\obj\Debug\netcoreapp2.1\Eventur
 C:\Users\s2k\source\repos\PandaStorage\Eventures\obj\Debug\netcoreapp2.1\Eventures.dll
 C:\Users\s2k\source\repos\PandaStorage\Eventures\obj\Debug\netcoreapp2.1\Eventures.pdb
 C:\Users\s2k\source\repos\PandaStorage\Eventures\obj\Debug\netcoreapp2.1\Eventures.csproj.CopyComplete
-C:\Users\s2k\source\repos\PandaStorage\Eventures\obj\Debug\netcoreapp2.1\Razor\Views\Account\Login.g.cshtml.cs
-C:\Users\s2k\source\repos\PandaStorage\Eventures\obj\Debug\netcoreapp2.1\Razor\Views\Account\Register.g.cshtml.cs
-C:\Users\s2k\source\repos\PandaStorage\Eventures\obj\Debug\netcoreapp2.1\Razor\Views\Event\Create.g.cshtml.cs
-C:\Users\s2k\source\repos\PandaStorage\Eventures\obj\Debug\netcoreapp2.1\Razor\Views\Event\AllEvents.g.cshtml.cs
 C:\Users\s2k\source\repos\PandaStorage\Eventures\obj\Debug\netcoreapp2.1\Eventures.csprojAssemblyReference.cache
+C:\Users\s2k\source\repos\PandaStorage\Eventures\obj\Debug\netcoreapp2.1\Razor\Views\Accounts\Login.g.cshtml.cs
+C:\Users\s2k\source\repos\PandaStorage\Eventures\obj\Debug\netcoreapp2.1\Razor\Views\Accounts\Register.g.cshtml.cs
+C:\Users\s2k\source\repos\PandaStorage\Eventures\obj\Debug\netcoreapp2.1\Razor\Views\Events\AllEvents.g.cshtml.cs
+C:\Users\s2k\source\repos\PandaStorage\Eventures\obj\Debug\netcoreapp2.1\Razor\Views\Events\Create.g.cshtml.cs
+C:\Users\s2k\source\repos\PandaStorage\Eventures\obj\Debug\netcoreapp2.1\Razor\Views\Events\MyEvents.g.cshtml.cs
+C:\Users\s2k\source\repos\PandaStorage\Eventures\obj\Debug\netcoreapp2.1\Razor\Views\Orders\All.g.cshtml.cs

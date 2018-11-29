@@ -20,5 +20,7 @@ namespace Eventures.Models
         public int TotalTickets { get; set; }
 
         public decimal PricePerTicket { get; set; }
+
+        public virtual ICollection<Order> Orders { get; set; } = new HashSet<Order>();
     }
 }

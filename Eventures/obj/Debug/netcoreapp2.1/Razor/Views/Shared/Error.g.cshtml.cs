@@ -23,8 +23,18 @@ using Eventures.Models;
 
 #line default
 #line hidden
+#line 3 "C:\Users\s2k\source\repos\PandaStorage\Eventures\Views\_ViewImports.cshtml"
+using Eventures.ViewModels.EventViewModels;
+
+#line default
+#line hidden
+#line 4 "C:\Users\s2k\source\repos\PandaStorage\Eventures\Views\_ViewImports.cshtml"
+using Eventures.ViewModels.OrderViewModels;
+
+#line default
+#line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"583387379a597938339285f5a623245873b0a91c", @"/Views/Shared/Error.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"9a955b74d506cfc9fe1d131dcd867512aad58ad1", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f91aa7b99a0a32c006563d0f8f8816e27e70b6a4", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared_Error : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<ErrorViewModel>
     {
         #pragma warning disable 1998

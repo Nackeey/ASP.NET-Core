@@ -16,5 +16,6 @@ namespace Eventures.Data
         }
 
         public DbSet<Event> Events { get; set; }
+        public DbSet<Order> Orders { get; set; }
     }
 }

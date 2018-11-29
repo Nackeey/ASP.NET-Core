@@ -13,5 +13,7 @@ namespace Eventures.Models
         public string LastName { get; set; }
 
         public string UniqueCitizenNumber { get; set; }
+
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

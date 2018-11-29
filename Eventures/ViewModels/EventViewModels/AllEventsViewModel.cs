@@ -8,6 +8,6 @@ namespace Eventures.ViewModels.EventViewModels
 {
     public class AllEventsViewModel
     {
-        public IEnumerable<Event> Events { get; set; }
+        public IEnumerable<EventViewModel> Events { get; set; }
     }
 }

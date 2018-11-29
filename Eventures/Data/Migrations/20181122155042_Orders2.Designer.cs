@@ -4,14 +4,16 @@ using Eventures.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Eventures.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181122155042_Orders2")]
+    partial class Orders2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -111,7 +113,7 @@ namespace Eventures.Data.Migrations
 
                     b.Property<DateTime>("OrderedOn");
 
-                    b.Property<int>("Tickets");
+                    b.Property<int>("TicketsCount");
 
                     b.HasKey("Id");
 
@@ -235,7 +237,7 @@ namespace Eventures.Data.Migrations
             modelBuilder.Entity("Eventures.Models.Order", b =>
                 {
                     b.HasOne("Eventures.Models.EventureUser", "Customer")
-                        .WithMany("Orders")
+                        .WithMany()
                         .HasForeignKey("CustomerId1");
 
                     b.HasOne("Eventures.Models.Event", "Event")

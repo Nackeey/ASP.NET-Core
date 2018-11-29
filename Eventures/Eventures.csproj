@@ -12,10 +12,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="Views\Account\Register.cshtml">
+    <Content Update="Views\Accounts\Register.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Views\Event\Create.cshtml">
+    <Content Update="Views\Events\Create.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
   </ItemGroup>
