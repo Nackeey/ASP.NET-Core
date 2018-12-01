@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Eventures.Data;
 using Eventures.Models;
@@ -104,6 +105,31 @@ namespace Eventures.Controllers
             }
 
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult ExternalLogin(string provider, string returnUrl = null)
+        {
+            var redirectUrl = "/Accounts/ExternalLogin";
+            var properties = this.signInManager.ConfigureExternalAuthenticationProperties(provider, redirectUrl);
+            return new ChallengeResult(provider, properties);
+        }
+
+        public IActionResult ExternalLogin()
+        {
+            var info = this.signInManager.GetExternalLoginInfoAsync().GetAwaiter().GetResult();
+            var email = info.Principal.FindFirstValue(ClaimTypes.Name);
+
+            var user = this.userManager.FindByEmailAsync(email).Result;
+            if (user == null)
+            {
+                user = new EventureUser { UserName = email, Email = email };
+                var result = this.userManager.CreateAsync(user).Result;
+            }
+
+            this.signInManager.SignInAsync(user, false).GetAwaiter().GetResult();
+            
+            return this.RedirectToAction("Index", "Home");
         }
     }
 }
