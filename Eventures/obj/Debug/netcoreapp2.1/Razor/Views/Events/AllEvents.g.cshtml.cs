@@ -132,7 +132,7 @@ using Eventures.ViewModels.OrderViewModels;
             WriteLiteral("</td>\r\n                <td>\r\n                    ");
             EndContext();
             BeginContext(842, 375, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9c48493e43c7450886cdc54997545473", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f8ed3007b017499087ce12fdbb878c1c", async() => {
                 BeginContext(911, 67, true);
                 WriteLiteral("\r\n                            <input class=\"eventId\" name=\"eventId\"");
                 EndContext();

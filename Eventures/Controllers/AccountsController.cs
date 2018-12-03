@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using AutoMapper;
 using Eventures.Data;
 using Eventures.Models;
 using Eventures.ViewModels;
@@ -17,18 +18,21 @@ namespace Eventures.Controllers
         private readonly UserManager<EventureUser> userManager;
         private readonly ApplicationDbContext applicationDb;
         private readonly RoleManager<IdentityRole> roleManager;
+        private readonly IMapper mapper;
 
         public AccountsController(
              SignInManager<EventureUser> signInManager,
              UserManager<EventureUser> userManager,
              RoleManager<IdentityRole> roleManager,
-             ApplicationDbContext applicationDb
+             ApplicationDbContext applicationDb,
+             IMapper mapper
             )
         {
             this.signInManager = signInManager;
             this.userManager = userManager;
             this.roleManager = roleManager;
             this.applicationDb = applicationDb;
+            this.mapper = mapper;
         }
 
         [HttpGet]
@@ -74,15 +78,8 @@ namespace Eventures.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new EventureUser
-                {
-                    UserName = model.Username,
-                    Email = model.Email,
-                    FirstName = model.FirstName,
-                    LastName = model.LastName,
-                    UniqueCitizenNumber = model.UCN,
-                };
-
+                var user = this.mapper.Map<EventureUser>(model);
+               
                 var result = userManager.CreateAsync(user, model.Password).Result;
 
                 if (result.Succeeded)

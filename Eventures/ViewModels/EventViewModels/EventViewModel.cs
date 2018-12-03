@@ -16,6 +16,6 @@ namespace Eventures.ViewModels.EventViewModels
 
         public DateTime End { get; set; }
 
-        public int Tickets { get; set; }
+        public int TotalTickets { get; set; }
     }
 }

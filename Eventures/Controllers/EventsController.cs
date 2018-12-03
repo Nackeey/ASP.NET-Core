@@ -8,6 +8,7 @@ using Eventures.Models;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using AutoMapper;
 
 namespace Eventures.Controllers
 {
@@ -15,11 +16,13 @@ namespace Eventures.Controllers
     {
         private readonly ApplicationDbContext applicationDb;
         private readonly ILogger logger;
+        private readonly IMapper mapper;
 
-        public EventsController(ApplicationDbContext applicationDb, ILoggerFactory logger)
+        public EventsController(ApplicationDbContext applicationDb, ILoggerFactory logger, IMapper mapper)
         {
             this.applicationDb = applicationDb;
             this.logger = logger.CreateLogger<EventsController>();
+            this.mapper = mapper;
         }
 
         public IActionResult MyEvents()
@@ -32,7 +35,7 @@ namespace Eventures.Controllers
                     Name = x.Event.Name,
                     Start = x.Event.Start,
                     End = x.Event.End,
-                    Tickets = x.Tickets
+                    TotalTickets = x.Tickets
                 });
 
             return this.View(myEvents);
@@ -40,15 +43,11 @@ namespace Eventures.Controllers
 
         public IActionResult AllEvents()
         {
-            var events = this.applicationDb.Events.Select
-                (x => new EventViewModel
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                    Start = x.Start,
-                    End = x.End,
-                });
-
+            var events = this.applicationDb
+                .Events
+                .Select(x => this.mapper.Map<EventViewModel>(x))
+                .ToList();
+              
             return this.View(events);
         }
 
@@ -62,15 +61,7 @@ namespace Eventures.Controllers
         {
             if (ModelState.IsValid)
             {
-                var newEvent = new Event
-                {
-                    Name = model.Name,
-                    Place = model.Place,
-                    Start = model.Start,
-                    End = model.End,
-                    TotalTickets = model.TotalTickets,
-                    PricePerTicket = model.PricePerTicket,
-                };
+                var newEvent = this.mapper.Map<Event>(model);
 
                 this.applicationDb.Events.Add(newEvent);
                 this.applicationDb.SaveChanges();

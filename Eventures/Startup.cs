@@ -14,6 +14,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Eventures.Models;
 using Eventures.Utilities;
+using AutoMapper;
+using Eventures.ViewModels;
+using Eventures.ViewModels.EventViewModels;
+using Eventures.ViewModels.OrderViewModels;
 
 namespace Eventures
 {
@@ -52,6 +56,13 @@ namespace Eventures
                 .AddDefaultTokenProviders()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
+            services.AddAutoMapper(config =>
+                {
+                    config.CreateMap<RegisterViewModel, EventureUser>();
+                    config.CreateMap<CreateEventViewModel, Event>();
+                    config.CreateMap<EventViewModel, Event>();
+                }
+            );
             services.AddAuthentication()
                 .AddFacebook(facebookOptions =>
                     {
