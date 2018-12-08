@@ -1,37 +1,44 @@
-﻿@model IEnumerable<EventViewModel>
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Core
+
+@model IPagedList<EventViewModel>
 
 <h1 class="text-center" style="font-size: 25px">All Events</h1>
 <hr class="hr-eventures-blue" style="width: 80%;" />
-<table class="table" style="width: 80%; margin: auto;">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Start</th>
-            <th scope="col">End</th>
-            <th scope="col">Actions</th>
-        </tr>
-    </thead>
-    @for (int i = 0; i < Model.Count(); i++)
-    {
-        var currentEvent = Model.ToList()[i];
-        var number = i + 1;
-
-        <tbody>
+<div>
+    <table class="table" style="width: 80%; margin: auto;">
+        <thead>
             <tr>
-                <td>@number</td>
-                <td>@currentEvent.Name</td>
-                <td>@currentEvent.Start</td>
-                <td>@currentEvent.End</td>
-                <td>
-                    <form method="post" asp-controller="Orders" asp-action="CreateOrder">
-                            <input class="eventId" name="eventId" value="@currentEvent.Id" hidden/>
-                            Tickets <input type="number" name="tickets" id="tickets" />
-                        <button type="submit" class="btn bg-eventures">Order</button>
-                    </form>
-                </td>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Start</th>
+                <th scope="col">End</th>
+                <th scope="col">Actions</th>
             </tr>
-        </tbody>
-    }
-</table>
-<hr class="hr-eventures-blue" style="width: 80%;" />
+        </thead>
+        @for (int i = 0; i < Model.Count(); i++)
+        {
+            var currentEvent = Model.ToList()[i];
+            var number = i + 1;
+
+            <tbody>
+                <tr>
+                    <td>@number</td>
+                    <td>@currentEvent.Name</td>
+                    <td>@currentEvent.Start</td>
+                    <td>@currentEvent.End</td>
+                    <td>
+                        <form method="post" asp-controller="Orders" asp-action="CreateOrder">
+                            <input class="eventId" name="eventId" value="@currentEvent.Id" hidden />
+                            Tickets <input type="number" name="tickets" id="tickets" />
+                            <button type="submit" class="btn bg-eventures">Order</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        }
+    </table>
+    <hr class="hr-eventures-blue" style="width: 80%;" />
+
+    @Html.PagedListPager(Model, page => Url.Action("AllEvents", "Events", new { page }))
+</div>

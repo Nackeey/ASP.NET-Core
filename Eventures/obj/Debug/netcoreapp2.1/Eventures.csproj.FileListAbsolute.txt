@@ -68,5 +68,5 @@ C:\Users\s2k\source\repos\PandaStorage\Eventures\obj\Debug\netcoreapp2.1\Razor\A
 C:\Users\s2k\source\repos\PandaStorage\Eventures\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.g.cshtml.cs
 C:\Users\s2k\source\repos\PandaStorage\Eventures\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\_ViewImports.g.cshtml.cs
 C:\Users\s2k\source\repos\PandaStorage\Eventures\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_LoginPartial.g.cshtml.cs
-C:\Users\s2k\source\repos\PandaStorage\Eventures\obj\Debug\netcoreapp2.1\Eventures.csprojAssemblyReference.cache
 C:\Users\s2k\source\repos\PandaStorage\Eventures\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
+C:\Users\s2k\source\repos\PandaStorage\Eventures\obj\Debug\netcoreapp2.1\Eventures.csprojAssemblyReference.cache

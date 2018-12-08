@@ -48,9 +48,23 @@ namespace Eventures.Controllers
                 return this.BadRequest("Invalid event id.");
             }
 
+            if (requestedEvent.TotalTickets < tickets)
+            {
+                return this.BadRequest("We don't have enough tickets to complete your order.");
+            }
+
             var customer = this.context.Users.FirstOrDefault(u => u.UserName == this.User.Identity.Name);
 
-            var order = this.mapper.Map<Order>(model);
+            var order = new Order
+            {
+                Customer = customer,
+                EventId = eventId,
+                Event = requestedEvent,
+                Tickets = tickets,
+                OrderedOn = DateTime.UtcNow
+            };
+
+            requestedEvent.TotalTickets -= tickets;
 
             this.context.Orders.Add(order);
             this.context.SaveChanges();

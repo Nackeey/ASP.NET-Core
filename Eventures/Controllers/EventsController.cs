@@ -9,6 +9,7 @@ using Eventures.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using AutoMapper;
+using X.PagedList;
 
 namespace Eventures.Controllers
 {
@@ -41,14 +42,18 @@ namespace Eventures.Controllers
             return this.View(myEvents);
         }
 
-        public IActionResult AllEvents()
+        public IActionResult AllEvents(int? page)
         {
             var events = this.applicationDb
                 .Events
                 .Select(x => this.mapper.Map<EventViewModel>(x))
                 .ToList();
+
+            var nextPage = page ?? 1;
+
+            var eventsOnPage = events.ToPagedList(nextPage, 4);
               
-            return this.View(events);
+            return this.View(eventsOnPage);
         }
 
         public IActionResult Create()

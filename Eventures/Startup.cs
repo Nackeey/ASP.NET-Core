@@ -89,9 +89,9 @@ namespace Eventures
 
             Seeder.Seed(serviceProvider);
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseAuthentication();
+            app.UseStaticFiles();
 
             app.UseMvc(routes =>
             {
