@@ -4,9 +4,7 @@ using Eventures.Models;
 using Eventures.ViewModels.OrderViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Eventures.Controllers
 {

@@ -1,0 +1,38 @@
+﻿@using Eventures.ViewModels;
+@model IEnumerable<UserViewModel>
+
+<h1 class="text-center" style="font-size: 25px">Users Administration</h1>
+<hr class="hr-eventures-blue" style="width: 80%;" />
+<table class="table w-50 mx-auto">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">UserName</th>
+            <th scope="col">Role</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    @for (int i = 0; i < Model.Count(); i++)
+    {
+        var currentUser = Model.ToList()[i];
+        var number = i + 1;
+
+        <tbody>
+            <tr>
+                <td scope="col">@number</td>
+                <td scope="col">@currentUser.UserName</td>
+                <td scope="col">@currentUser.UserRole</td>
+                <td scope="col">
+                    @if (currentUser.UserRole == "Administrator")
+                    {
+                        <a asp-controller="Accounts" asp-action="Demote" asp-route-id="@currentUser.Id" class="text-eventures">Demote</a>
+                    }
+                    else
+                    {
+                        <a asp-controller="Accounts" asp-action="Promote" asp-route-id="@currentUser.Id" class="text-eventures">Promote</a>
+                    }
+                </td>
+            </tr>
+        </tbody>
+    }
+</table>

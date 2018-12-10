@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Eventures.Data;
@@ -17,7 +13,8 @@ using Eventures.Utilities;
 using AutoMapper;
 using Eventures.ViewModels;
 using Eventures.ViewModels.EventViewModels;
-using Eventures.ViewModels.OrderViewModels;
+using Eventures.Services.AccountServices;
+using Eventures.Services.EventServices;
 
 namespace Eventures
 {
@@ -55,6 +52,9 @@ namespace Eventures
             })
                 .AddDefaultTokenProviders()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddTransient<IAccountService, AccountService>();
+            services.AddTransient<IEventService, EventService>();
 
             services.AddAutoMapper(config =>
                 {

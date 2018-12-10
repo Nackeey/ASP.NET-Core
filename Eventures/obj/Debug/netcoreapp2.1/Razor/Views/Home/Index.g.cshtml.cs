@@ -33,13 +33,18 @@ using Eventures.ViewModels.OrderViewModels;
 
 #line default
 #line hidden
+#line 5 "C:\Users\s2k\source\repos\PandaStorage\Eventures\Views\_ViewImports.cshtml"
+using Eventures.ViewModels;
+
+#line default
+#line hidden
 #line 1 "C:\Users\s2k\source\repos\PandaStorage\Eventures\Views\Home\Index.cshtml"
 using Microsoft.AspNetCore.Identity;
 
 #line default
 #line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6348f3fb5ee85050b82add0576f078e43b0062dd", @"/Views/Home/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f91aa7b99a0a32c006563d0f8f8816e27e70b6a4", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"5084f1253277c1e819aef4ef11a83859c3f9e9bb", @"/Views/_ViewImports.cshtml")]
     public class Views_Home_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-controller", "Accounts", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -140,7 +145,7 @@ else
             WriteLiteral("    <div class=\"jumbotron bg-eventures w-75 mx-auto\">\r\n        <h1 class=\"text-eventures\" style=\"font-size: 30px;\">Eventures - The best ticket service in the world.</h1>\r\n        <hr class=\"bg-eventures hr-eventures\" />\r\n        <h2 class=\"text-black\">");
             EndContext();
             BeginContext(1090, 57, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "70c064ba8fa94171a5bd37cfae8ae52c", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3c4eb9c206754a94802784095d8cf3ff", async() => {
                 BeginContext(1138, 5, true);
                 WriteLiteral("Login");
                 EndContext();
@@ -164,7 +169,7 @@ else
             WriteLiteral(" to start \"eventing\".</h2>\r\n        <h2 class=\"text-black\">");
             EndContext();
             BeginContext(1206, 63, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d9041ece8c2b41e1b4bd4967c0e174be", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1a2d2ea5cecb4f19a23d670d93a7fcdb", async() => {
                 BeginContext(1257, 8, true);
                 WriteLiteral("Register");
                 EndContext();

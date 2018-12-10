@@ -33,8 +33,13 @@ using Eventures.ViewModels.OrderViewModels;
 
 #line default
 #line hidden
+#line 5 "C:\Users\s2k\source\repos\PandaStorage\Eventures\Views\_ViewImports.cshtml"
+using Eventures.ViewModels;
+
+#line default
+#line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"64aa0115d626f35433e5d96032f0ea0911daefff", @"/Views/Orders/All.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f91aa7b99a0a32c006563d0f8f8816e27e70b6a4", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"5084f1253277c1e819aef4ef11a83859c3f9e9bb", @"/Views/_ViewImports.cshtml")]
     public class Views_Orders_All : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<OrderViewModel>>
     {
         #pragma warning disable 1998

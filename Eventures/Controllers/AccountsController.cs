@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
-using System.Threading.Tasks;
 using AutoMapper;
 using Eventures.Data;
 using Eventures.Models;
+using Eventures.Services.AccountServices;
 using Eventures.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -20,12 +19,15 @@ namespace Eventures.Controllers
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly IMapper mapper;
 
+        public IAccountService AccountService { get; set; }
+
         public AccountsController(
              SignInManager<EventureUser> signInManager,
              UserManager<EventureUser> userManager,
              RoleManager<IdentityRole> roleManager,
              ApplicationDbContext applicationDb,
-             IMapper mapper
+             IMapper mapper,
+             IAccountService accountService
             )
         {
             this.signInManager = signInManager;
@@ -33,6 +35,7 @@ namespace Eventures.Controllers
             this.roleManager = roleManager;
             this.applicationDb = applicationDb;
             this.mapper = mapper;
+            this.AccountService = accountService;
         }
 
         [HttpGet]
@@ -78,25 +81,7 @@ namespace Eventures.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = this.mapper.Map<EventureUser>(model);
-               
-                var result = userManager.CreateAsync(user, model.Password).Result;
-
-                if (result.Succeeded)
-                {
-                    IdentityRole role;
-
-                    if (this.applicationDb.Users.Count() == 1)
-                    {
-                        role = this.applicationDb.Roles.FirstOrDefault(r => r.Name == "Administrator");
-                    }
-                    else
-                    {
-                        role = this.applicationDb.Roles.FirstOrDefault(r => r.Name == "User");
-                    }
-
-                    var addtoRoleResult = userManager.AddToRoleAsync(user, role.Name).Result;
-                }
+                this.AccountService.CreateUser(model);
 
                 return RedirectToAction("Login", "Accounts");
             }
@@ -127,6 +112,48 @@ namespace Eventures.Controllers
             this.signInManager.SignInAsync(user, false).GetAwaiter().GetResult();
             
             return this.RedirectToAction("Index", "Home");
+        }
+
+        public IActionResult UserAdministration()
+        {
+            var users = new List<UserViewModel>();
+            foreach (var u in this.applicationDb.Users.OrderBy(x => x.UserName).ToList())
+            {
+                var user = new UserViewModel
+                {
+                    UserName = u.UserName,
+                    Id = u.Id
+                };
+
+                var roleId = this.applicationDb.UserRoles.Where(r => r.UserId == u.Id).FirstOrDefault();
+
+                if (roleId != null)
+                {
+                    user.UserRole = this.roleManager.Roles.Where(r => r.Id == roleId.RoleId).FirstOrDefault().Name;
+                }
+
+                users.Add(user);
+            }
+
+            return this.View("Users", users);
+        }
+
+        public IActionResult Promote(string id)
+        {
+            var user = this.applicationDb.Users.Where(u => u.Id == id).FirstOrDefault();
+            this.userManager.RemoveFromRoleAsync(user, "User").GetAwaiter().GetResult();
+            this.userManager.AddToRoleAsync(user, "Administrator").GetAwaiter().GetResult();
+
+            return this.RedirectToAction("UserAdministration");
+        }
+
+        public IActionResult Demote(string id)
+        {
+            var user = this.applicationDb.Users.Where(u => u.Id == id).FirstOrDefault();
+            this.userManager.RemoveFromRoleAsync(user, "Administrator").GetAwaiter().GetResult();
+            this.userManager.AddToRoleAsync(user, "User").GetAwaiter().GetResult();
+
+            return this.RedirectToAction("UserAdministration");
         }
     }
 }

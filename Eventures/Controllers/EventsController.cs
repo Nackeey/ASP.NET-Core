@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Eventures.Data;
+﻿using Eventures.Data;
 using Eventures.ViewModels.EventViewModels;
 using Eventures.Models;
-
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using AutoMapper;
-using X.PagedList;
+using Eventures.Services.EventServices;
+using System.Linq;
 
 namespace Eventures.Controllers
 {
@@ -19,39 +15,35 @@ namespace Eventures.Controllers
         private readonly ILogger logger;
         private readonly IMapper mapper;
 
-        public EventsController(ApplicationDbContext applicationDb, ILoggerFactory logger, IMapper mapper)
+        public IEventService EventService { get; set; }
+
+        public EventsController(ApplicationDbContext applicationDb, ILoggerFactory logger, IMapper mapper, IEventService eventService)
         {
             this.applicationDb = applicationDb;
             this.logger = logger.CreateLogger<EventsController>();
             this.mapper = mapper;
+            this.EventService = eventService;
         }
 
         public IActionResult MyEvents()
         {
             var myEvents = this.applicationDb
-                .Orders
-                .Where(x => x.Customer.UserName == this.User.Identity.Name)
-                .Select(x => new MyEventViewModel
-                {
-                    Name = x.Event.Name,
-                    Start = x.Event.Start,
-                    End = x.Event.End,
-                    TotalTickets = x.Tickets
-                });
+                 .Orders
+                 .Where(x => x.Customer.UserName == this.User.Identity.Name)
+                 .Select(x => new MyEventViewModel
+                 {
+                     Name = x.Event.Name,
+                     Start = x.Event.Start,
+                     End = x.Event.End,
+                     TotalTickets = x.Tickets
+                 });
 
             return this.View(myEvents);
         }
 
         public IActionResult AllEvents(int? page)
         {
-            var events = this.applicationDb
-                .Events
-                .Select(x => this.mapper.Map<EventViewModel>(x))
-                .ToList();
-
-            var nextPage = page ?? 1;
-
-            var eventsOnPage = events.ToPagedList(nextPage, 4);
+            var eventsOnPage = this.EventService.AllEvents(page);
               
             return this.View(eventsOnPage);
         }
